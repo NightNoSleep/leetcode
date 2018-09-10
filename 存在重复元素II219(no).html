@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [1,2,3,1,2,3], k = 2
+		var containsNearbyDuplicate = function(nums, k) {
+    		for(let i =0;i<nums.length;i++){
+    			let num = nums.splice(i,1,'1')[0]
+    			if (i<k) {
+    				if(nums.slice(0,i+k+1).indexOf(num)!== -1){
+    					return true
+    				}
+    			}else if(nums.length-i+1<k){
+    				if (nums.slice(i,-1).indexOf(num)!== -1) {
+    					return true
+    				}
+    			}else{
+    				if (nums.slice(i-k,i+k+1).indexOf(num)!== -1) {
+    					return true
+    				}
+    			}
+    		nums.splice(i,1,num)
+    		}
+    		return false
+		};
+		console.log(containsNearbyDuplicate(nums,k))
+	</script>
+</body>
+</html>

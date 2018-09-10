@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [0,1,0,3,12];
+		var moveZeroes = function(nums) {
+    		let num = 0;
+    		for(let i =0;;i++){
+    			if (nums.indexOf(0) !== -1) {
+	    			nums.splice(nums.indexOf(0),1)
+	    			num+=1
+	    		}else{
+	    			for(let j = 0;j<num;j++){
+	    				nums.push(0)
+	    			}
+	    		}
+    		}
+
+		};
+		console.log(moveZeroes(nums))
+	</script>
+</body>
+</html>

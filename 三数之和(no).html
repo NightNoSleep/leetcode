@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [1,-3,0,2,7,0,1,-1,0];
+		var repeat = function(arr,all){
+			for(var i = 0;i<all.length;i++){
+				if (all[i].indexOf(arr[0]) !== -1 && all[i].lastIndexOf(arr[1]) !== -1 && ((all[i].indexOf(arr[0]) !== all[i].lastIndexOf(arr[1])))) {
+					return false
+				}
+			}
+			return true
+		}
+		var threeSum = function(nums) {
+			let arr = [];
+			for(let i = 0;i<nums.length;i++){
+				let second = 0 - nums[i]
+				for(let j = 0;j<nums.length;j++){
+					if (i !== j){
+						let three = second-nums[j]
+						if (nums.indexOf(three) !== -1 && nums.lastIndexOf(three) !== i && nums.lastIndexOf(three) !== j) {
+							if (!arr.length) {
+								arr.push([nums[i],nums[j],three])
+							}else{
+								if(repeat([nums[i],nums[j],three],arr)){
+									arr.push([nums[i],nums[j],three])
+								}
+							}
+						}
+					}
+				}
+			}
+    		return arr
+		};
+		console.log(threeSum(nums))
+	</script>
+</body>
+</html>

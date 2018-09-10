@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums1 = [1,2,5,7,0,0,0,],m=4,nums2 = [2,4,3],n=3
+		var merge = function(nums1, m, nums2, n) {
+			let length = nums1.length
+			for(let i = 0;i<length-m;i++){
+				nums1.splice(nums1.indexOf(0),1)
+			}
+    		nums1.splice(-1,0,...nums2)
+    		nums1.sort((a,b)=>{return a-b})
+		};
+		console.log(merge(nums1,m,nums2,n))
+	</script>
+</body>
+</html>

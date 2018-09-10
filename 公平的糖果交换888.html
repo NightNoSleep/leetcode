@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let A = [1,2,5],B=[2,4]
+		var fairCandySwap = function(A, B) {
+    		let arr = [...A,...B]
+    		let all = eval(arr.join('+'))
+    		let a = eval(A.join('+'))
+    		let num = all/2-a
+    		if (num>=0) {
+    			for(let i = 0;i<A.length;i++){
+    				if (B.indexOf(A[i]+num)!== -1) {
+    					return [A[i],(A[i]+num)]
+    				}
+    			}
+    		}else{
+    			for(let i = 0;i<A.length;i++){
+    				if (B.indexOf(A[i]+num)!== -1) {
+    					return [A[i],(A[i]+num)]
+    				}
+    			}
+    		}
+		};
+		console.log(fairCandySwap(A,B))
+	</script>
+</body>
+</html>

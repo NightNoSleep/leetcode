@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var nums = [-1,-2,-3,-4,-5,-1],target = -2;
+		var twoSum = function(nums, target) {
+		    for(var i = 0;i<nums.length;i++){
+		        let second = target - nums[i]
+		        if(nums.indexOf(second) !== -1 && nums.indexOf(second) !== i){
+		            return [i,nums.indexOf(second)]
+		        }
+		    }
+		};
+		console.log(twoSum(nums,target))
+	</script>
+</body>
+</html>

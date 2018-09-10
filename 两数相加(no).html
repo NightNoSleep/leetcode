@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="application/javascript">
+		let l1 = [2,4,3],
+			l2 = [5,6,4];
+		var addTwoNumbers = function(l1, l2) {
+		    let l11 = Number(Array.from(l1).reverse().join('')),
+		   		l22 = Number(Array.from(l2).reverse().join(''));
+		   	let l33 = String(l11+l22).split('').reverse()
+		   	let newArr = []
+		   	for(var i = 0;i<l33.length;i++){
+		   		newArr.push(Number(l33[i]))
+		   	}
+		   	return newArr
+		};
+		console.log(addTwoNumbers(l1,l2))
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let remove = [9,8,7,6,1,1,2]
+		var removeDuplicates = function(nums) {
+		    for(let i = 0; i<nums.length;i++){
+		    	for(let j =0;;j++){
+		    		if(nums.lastIndexOf(nums[i]) !== i){
+			            nums.splice(nums.lastIndexOf(nums[i]),1)
+			        }else{
+			        	break
+			        }
+		    	}
+		        
+		    }
+		    return nums
+		};
+		// var removeDuplicates = function(nums) {
+		//     for(let i = 0; i<nums.length;i++){
+		//         for(let j = i+1;j<nums.length;j++){
+		//             if(nums[i] === nums[j]){
+		//             	nums.splice(j,1)
+		//            		j--;
+		//             }
+		            
+		//         }
+		//     }
+		// };
+		let newARR = removeDuplicates(remove)
+		console.log(newARR)
+	</script>
+</body>
+</html>
