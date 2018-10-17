@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let prices = [2,1,2,1,0,1,2]
+		var maxProfit = function(prices) {
+			let money = 0
+			let length = prices.length
+			for(let i = 0;i<length;i++){
+				let one = prices[0]
+				prices.splice(0,1)
+				let max = Math.max(...prices)
+				if ((max - one)> 0 && (max-one)>money) {
+					money = max - one
+				}
+			}
+			return money 
+		};
+		console.log(maxProfit(prices))
+	</script>
+</body>
+</html>
