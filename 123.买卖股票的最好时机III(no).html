@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let prices = [1,2,4,2,5,7,2,4,9,0]
+		var maxProfit = function(prices) {
+			let money = 0
+    		for(let i = 0;i<prices.length;i++){
+    			if (prices[i]>=prices[i+1]) {}
+    			else{
+    				let one = prices[i]
+    				let first = 0
+    				let time = 1
+    				let second = 0
+    				for(let j = i+1;j<prices.length;j++){
+    					if (prices[j]<=prices[j+1]) {}
+    					else if(time == 1){
+    						time = 2
+    						first += prices[j] - one
+    						one = prices[j+1]
+    					}else if(time == 2){
+    						if (second<(prices[j] - one)) {
+    							second = prices[j] - one
+    						}
+    						one = prices[j+1]
+    					}
+    				}
+    				first += second
+    				if (first>money) {
+    					money = first
+    				}
+    			}
+    		}
+    		return money
+		};
+		console.log(maxProfit(prices))
+	</script>
+</body>
+</html>
