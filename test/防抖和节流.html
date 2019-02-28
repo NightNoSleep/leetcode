@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			width: 200px;
+			height:200px;
+		}
+		div{
+			width: 200px;
+			height:90px;
+			display: -webkit-box;
+			-webkit-box-orient:vertical;
+			-webkit-line-clamp:3;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<img src=''>
+	<div>
+		阿斯顿发你了康克里斯内拉的说服力快感拉克丝放你上课了地方你赶快拉上的烦恼不好看了拉克丝难道格拉斯的烦恼那上课了发给你了看上哪个快了你阿斯兰的看过你卡萨丁那个路口那时的观看是口令年高考了那是罚款了给你开朗看了你上课了给你快了你啥都看了给你看了桑离开纳洛时空给你卢卡斯高
+	</div>
+	<button>开始</button>
+	<script>
+		// document.getElementsByTagName('div')[0].addEventListener('copy',function(e){
+		// 	e.stopPropagation()
+		// 	console.log(1)
+		// })
+		document.getElementsByTagName('div')[0].oncopy =(e) => {
+			e.stopPropagation()
+			
+		}
+		document.querySelector('button').onclick = function () {
+				
+			second()
+		}
+		let timer = null
+		const show = ()  => {
+			console.log(1)
+			clearTimeout(timer)
+			timer = setTimeout(() => {
+			},1000)
+		}
+		let flag = true
+		const second = () => {
+			if(!flag){
+				return
+			}
+			flag = false
+			setTimeout(() => {
+				console.log('节流')
+				flag = true
+				console.log(document.getElementsByTagName('img'))
+			},1000)
+		}
+
+		Function.prototype.a = 1
+		Object.prototype.b = 1
+		function Foo() {}
+		var t = new Foo()
+		console.log(t.a,t.b)
+	</script>
+</body>
+</html>

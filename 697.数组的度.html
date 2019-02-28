@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [1,2,2,3,1]
+		var findShortestSubArray = function(nums) {
+		    let arr = Array.from(new Set(nums))
+		    let kong = new Array(arr.length).fill(0)
+		    nums.forEach((item) => {
+		        kong[arr.indexOf(item)] += 1
+		    })
+		    let max = Math.max(...kong)
+		    let length = 0
+		    for(let i = 0;i<kong.length;i++){
+		        if(kong[i] == max){
+		            let num = arr[i]
+		            if(length == 0){
+		           		length = nums.lastIndexOf(num) - nums.indexOf(num) + 1
+		            }else{
+		           		length = Math.min(length,nums.lastIndexOf(num) - nums.indexOf(num) + 1)
+		            }
+		        }
+		    }
+		    return length
+		};
+		console.log(findShortestSubArray(nums))
+	</script>
+</body>
+</html>

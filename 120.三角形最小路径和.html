@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let triangle = [
+		      [-1],
+		      [3,2],
+		  [100,200,-1],
+		[200,100,9,-200],
+		[-20000,1,2,3,4]
+		]
+		var minimumTotal = function(triangle) {
+		    if(triangle.length == 0){return 0}
+		    else{
+		        let arr = new Array(triangle.length).fill(0)
+		        arr[0] = triangle[0][0]
+		        for(let i = 1;i<triangle.length;i++){
+		            let item = triangle[i]
+		            let old = [...arr]
+		            for(let j = 0;j<item.length;j++){
+		            	if(j == 0){
+		            		arr[j] = old[j]+item[j]
+		            	}else if(j == item.length-1){
+		            		arr[j] = old[j-1]+item[j]
+		            	}else{
+		            		arr[j] = Math.min(old[j-1]+item[j],old[j]+item[j])
+		            	}
+		            }
+		        }
+		        return Math.min(...arr)
+		    }
+		};
+		console.log(minimumTotal(triangle))
+	</script>
+</body>
+</html>

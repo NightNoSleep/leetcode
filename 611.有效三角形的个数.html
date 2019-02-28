@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [1,2,2,3,4]
+		var triangleNumber = function(nums) {
+    		let num = 0
+    		if(nums.length<=2){return num}
+    		else{
+    			nums.sort((a,b)=>{return a-b})
+    			let one 
+    			let two 
+    			for(let i = 0;i<nums.length-2;i++){
+    				one = nums[i]
+    				for(let k = i+1;k<nums.length;k++){
+    					two = nums[k]
+    					flag:
+	    				for(let j = k+1;j<nums.length;j++){
+	    					if(one + two <= nums[j]){
+		    					break flag 
+		    				}else{
+		    					num += 1
+		    				}
+	    				}
+    				}
+    			}
+    		}
+    		return num
+		};
+		console.log(triangleNumber(nums))
+	</script>
+</body>
+</html>

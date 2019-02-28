@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [2,0,2,1,1,2,0]
+		var sortColors = function(nums) {
+			let zero = one = two = 0
+		    for(let i = 0;i<nums.length;i++){
+		        nums[i] >0 ?nums[i] == 1? one +=1 :two += 1 : zero += 1
+		    }
+		    nums.fill(0)
+		    nums.fill(1,zero,zero+one)
+		    nums.fill(2,zero+one)
+		    return nums
+		};
+		console.log(sortColors(nums))
+	</script>
+</body>
+</html>

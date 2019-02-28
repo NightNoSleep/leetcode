@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>开始</button>
+	<div class="parent">
+		<div class='children'>
+			
+		</div>
+	</div>
+	<script>
+		document.querySelector('button').onclick = function () {
+
+			promiseThen().then(() => {
+				this.jgksdg()
+			}).then(() => {
+				console.log(2)
+			}).catch(err => {
+				console.log('error',err)
+			})
+		}
+		function promiseThen () {
+			return new Promise((resolve,reject) => {
+				setTimeout(() => {
+					resolve(()=>{
+						console.log('success')
+					})
+				},2000)
+			})
+		}
+	</script>
+</body>
+</html>

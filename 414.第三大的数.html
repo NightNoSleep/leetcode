@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [2,3]
+		var thirdMax = function(nums) {
+		    if(nums.length<=2){
+		    	return Math.max.apply(null,nums)
+		    }else{
+		        let arr = nums.sort((a,b)=>{return b-a})	//降序
+		        let index = 1
+		        for(let i = 0;i<arr.length;i++){
+		        	if(arr[i+1]<arr[i]){
+		        		index += 1
+		        		if(index == 3){
+			        		return arr[i+1]
+			        	}
+		        	}
+		        }
+		        return Math.max(nums)
+		    }
+		};
+		console.log(thirdMax(nums))
+	</script>
+</body>
+</html>

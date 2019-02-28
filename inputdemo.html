@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width:300px;
+			height:300px;
+		}
+		.time_show {
+			display: flex;
+		}
+	</style>
+</head>
+<body>
+	<div class='container'>
+		<select  value='1' class='select_type'>
+			<option value="1">下单时间</option>
+			<option value="2">支付时间</option>
+		</select>
+		<div class='time_show'>
+			<input type="date" class='time_start' value='2018-12-01'> <span>&nbsp; - &nbsp;</span> <input type="date" class='time_end' value='2018-12-31'>
+		</div>
+	</div>
+	<script>
+		setTimeout(() => {
+			window.location.href='http://www.baidu.com';
+		}, 9000);  
+		document.querySelector('.select_type').onchange = function () {
+			document.querySelector('.time_start').value='2018-11-11'
+			document.querySelector('.time_end').value='2019-11-11'
+		}
+
+
+		let a = {
+			"b":'1',
+			"c":'2'
+		}
+		for(var i in a){
+			console.log(a[i])
+		}
+	</script>
+</body>
+</html>

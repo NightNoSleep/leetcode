@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [722,634,163,-420,-368,-786]
+		var maximumProduct = function(nums) {
+		    let arr = Array.from(nums.sort((a,b)=>{return b-a}))
+			console.log(arr)
+		    let length = arr.length
+		    
+		    let one = arr[0]*arr[1]*arr[2]
+		    let two = arr[0]*arr[length-1]*arr[length-2]
+		    let three = arr[length-1]*arr[length-2]*arr[length-3]
+		    return Math.max(one,two,three)
+		};
+		console.log(maximumProduct(nums))
+	</script>
+</body>
+</html>

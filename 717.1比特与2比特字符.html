@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let bits = [1,1,0]
+		var isOneBitCharacter = function(bits) {
+		    let length = bits.length
+		    if(bits[length-1] == 1){
+		        return false
+		    }else{
+		        let one = 0
+		        
+		        flag: for(let i = length-2;i>=0;i--){
+		            if(bits[i] == 1){
+		                one += 1
+		            }else{
+		                break flag
+		            }
+		        }
+		        if(one % 2 != 0){
+		            return false
+		        }else{
+		            return true
+		        }
+		    }
+		};
+		console.log(isOneBitCharacter(bits))
+	</script>
+</body>
+</html>

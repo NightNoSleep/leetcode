@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let num = 9973
+		var maximumSwap = function(num) {
+		    if(num<=9){return num}
+		    let arr = num.toString().split('')
+		    for(let i = 0;i<arr.length;i++){
+		    	let max = Math.max(...arr.slice(i))
+		    	if(arr[i] != max){
+		    		let index = arr.lastIndexOf(String(max))
+		    		arr[index] = arr[i]
+		    		arr[i] = String(max)
+		    		return Number(arr.join(''))
+		    	}
+		    }
+		    return num
+		};
+		console.log(maximumSwap(num))
+	</script>
+</body>
+</html>

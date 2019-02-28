@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [3]
+		let k = 1
+		var findMaxAverage = function(nums, k) {
+    		let num = old = 0
+		    for(let j = 0;j<k;j++){
+		        num += nums[j] 
+		    }
+		    for(let i = 1;i<nums.length-k;i++){
+		        num = num - nums[i-1]+nums[i+k-1]
+		        old = Math.max(num,old)
+		    }
+		    old = Math.max(num,old)
+		    return (old / k)
+		};
+		console.log(findMaxAverage(nums,k))
+	</script>
+</body>
+</html>

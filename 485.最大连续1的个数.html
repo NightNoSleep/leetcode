@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [1,1,0,1,1,1]
+		var findMaxConsecutiveOnes = function(nums) {
+    		let num=old=0
+    		for(let i = 0;i<nums.length;i++){
+    			if(nums[i] == 1){
+    				num+=1
+    			}else{
+    				if(num > old){
+    					old = num
+    				}
+    				num = 0
+    			}
+    		}
+    		if(num >old){return num}
+    		else{
+    			return old
+    		}
+		};
+		console.log(findMaxConsecutiveOnes(nums))
+	</script>
+</body>
+</html>

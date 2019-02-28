@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let S = "aaa"
+		var largeGroupPositions = function(S) {
+		    let arr = S.split('')
+		    let matrix = []
+		    let num = 0
+		    let one = arr[0]
+		    for(let i = 0;i<arr.length;i++){
+		        if(arr[i] == one){
+		            num +=1
+		        }else{
+		            if(num >=3 ){
+		                one = arr[i]
+		                matrix.push([i-num,i-1])
+		                num = 1
+		            }else{
+		                one = arr[i]
+		                num = 1
+		            }
+		        }
+		    }
+		    if(num >=3 ){
+                matrix.push([arr.length-num,arr.length-1])
+		    }
+		    return matrix
+		};
+		console.log(largeGroupPositions(S))
+	</script>
+</body>
+</html>

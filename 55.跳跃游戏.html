@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let nums = [8,2,4,4,4,9,5,2,5,8,8,0,8,6,9,1,1,6,3,5,1,2,6,6,0,4,8,6,0,3,2,8,7,6,5,1,7,0,3,4,8,3,5,9,0,4,0,1,0,5,9,2,0,7,0,2,1,0,8,2,5,1,2,3,9,7,4,7,0,0,1,8,5,6,7,5,1,9,9,3,5,0,7,5]
+		var canJump = function(nums) {
+		    if(nums[0] == 0 && nums.length != 1){
+		        return false
+		    }else if(nums[0] == 0 && nums.length == 1){
+		    	return true
+		    }else if(nums.indexOf(0) == -1 || nums.indexOf(0) == nums.length-1){
+		        return true
+		    }else{
+		        for(let i = nums.indexOf(0);i<nums.length;){
+		        	let index = 1
+		        	let last = false
+		        	num:
+		        	for(let k = i+1;k<nums.length;k++){
+		        		if(nums[k] == 0){
+		        			index += 1
+		        			if(k == nums.length-1){
+		        				last = true
+		        			}
+		        		}else{
+		        			break num
+		        		}
+		        	}
+		            flag:
+		            for(let j = i-1;j>=0;j--){
+		                if(nums[j] >= i-j+index && !last ){
+		                    nums.splice(0,i+index)
+		                    i = nums.indexOf(0)
+		                    if(nums.indexOf(0) == -1 || nums.indexOf(0) == nums.length-1){
+		                        return true
+		                    }
+		                    break flag
+		                }else if(nums[j] >= i-j+index-1 && last){
+		                    return true
+		                }
+		                if(j == 0){
+		                    return false
+		                }
+		            }
+		        }
+		    }
+		}
+		console.log(canJump(nums))
+	</script>
+</body>
+</html>
