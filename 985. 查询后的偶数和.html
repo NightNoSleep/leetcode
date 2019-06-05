@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let A = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]
+        var sumEvenAfterQueries = function(A, queries) {
+            let answer = []
+            let all = A.reduce((now,item) =>{
+                if(item % 2 == 0){
+                    return now + item
+                }else {
+                    return now
+                }
+            },0)
+            for(let i = 0;i<queries.length;i++){
+                let num = queries[i][0],
+                    index = queries[i][1];
+                if((A[index] + num) % 2 == 0 && A[index] % 2 == 0){
+                    A[index] += num
+                    all += num
+                }else if((A[index] + num) % 2 == 0 && A[index] % 2 != 0){
+                    A[index] += num
+                    all += A[index]
+                }else if((A[index] + num) % 2 != 0 && A[index] % 2 == 0){
+                    all -= A[index]
+                    A[index] += num
+                }else if((A[index] + num) % 2 != 0 && A[index] % 2 != 0){
+                    A[index] += num
+                }
+                answer.push(all)
+            }
+            return answer
+        };
+        document.querySelector('.content').innerHTML= sumEvenAfterQueries(A,queries)
+    </script>
+</body>
+</html>

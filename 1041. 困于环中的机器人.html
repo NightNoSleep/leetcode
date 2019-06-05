@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let instructions = "LGLG"
+        var isRobotBounded = function(instructions) {
+            let route = instructions.split('')
+            let s = [0,0]
+            let direction = 12 // 时钟方向
+            for(let i = 0;i<4;i++){
+                for(let j = 0;j<route.length;j++){
+                    if(route[j] == 'G'){
+                        if(direction == 12 || direction == 3){
+                            s[1] += 1
+                        }else{
+                            s[1] -= 1
+                        }
+                    }else if(route[j] == 'L'){
+                        direction = direction == 3 ? 12 : direction - 3
+                    }else{
+                        direction = direction == 12 ? 3 : direction + 3
+                    }
+                }
+                if(JSON.stringify(s) == '[0,0]'){
+                    return true
+                }
+            }
+            return false
+        };
+        document.querySelector('.content').innerHTML= isRobotBounded(instructions)
+    </script>
+</body>
+</html>

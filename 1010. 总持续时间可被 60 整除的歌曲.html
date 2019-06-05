@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let time = [15,63,451,213,37,209,343,319]
+        var numPairsDivisibleBy60 = function(time) {
+            let num = 0
+            let obj = {}
+            time.map(item => {
+                obj[item % 60] = obj[item % 60] ? obj[item % 60] + 1 : 1
+            })
+            console.log(obj)
+            for(let i in obj){
+                if(i != '0' && i != '30'){
+                    if(obj[60 - Number(i)]){
+                        num += obj[i] * obj[60 - Number(i)]
+                        obj[i] = 0
+                    }
+                }else{
+                    num += obj[i] * (obj[i] - 1) / 2
+                }
+            }
+            return num
+        };
+        document.querySelector('.content').innerHTML= numPairsDivisibleBy60(time)
+    </script>
+</body>
+</html>

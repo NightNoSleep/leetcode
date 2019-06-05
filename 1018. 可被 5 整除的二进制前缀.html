@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let A = [1,0,1,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,1,1,1,1,1,0,0,0,1,0,1,1,1,1,0,1,1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,0,1,1,0,0,1,1,1]
+        var prefixesDivBy5 = function(A) {
+            let result = []
+            let num = 0
+            for(let i = 0;i<A.length;i++){
+                num = (num * 2 + A[i]) % 5
+                result.push((num === 0 ? true : false))
+            }
+            return result
+        };
+        document.querySelector('.content').innerHTML= prefixesDivBy5(A)
+    </script>
+</body>
+</html>

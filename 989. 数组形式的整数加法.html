@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let A = [7,7,5,2], K = 7109
+        var addToArrayForm = function(A, K) {
+            let arr = String(K).split('')
+            if(A.length < arr.length){
+                A = [arr,arr = A][0]
+            }
+            let times = 1
+            for(let i = A.length - 1;i>=0;i--){
+                let num = Number(A[i])
+                if(times <= arr.length){
+                    num += Number(arr[arr.length-times])
+                    times += 1
+                }
+                if(num >= 10){
+                    if(i == 0){
+                        A[0] = num - 10
+                        A.splice(0,0,1)
+                    }else{
+                        A[i] = num - 10
+                        A[i-1] = Number(A[i-1]) + 1
+                    }
+                }else{
+                    A[i] = num 
+                }
+            }
+            return A
+        };
+        document.querySelector('.content').innerHTML= addToArrayForm(A,K)
+    </script>
+</body>
+</html>

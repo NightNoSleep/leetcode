@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let A = [3,3,6,5,-2,2,5,1,-9,4]
+        var canThreePartsEqualSum = function(A) {
+            let all = A.reduce((a,b) => a + b)
+            if(all % 3 === 0){
+                let num = all / 3
+                let left = [],
+                    length = A.length,
+                    right = [];
+                for(let i = 0;i<length - 1;i++){
+                    if(i == 0){
+                        left = [A[0],0]
+                        right = [A[length - 1],length - 1]
+                    }
+                    if(left[0] != num){
+                        left = [left[0] + A[left[1] + 1],left[1] + 1]
+                    }
+                    if(right[0] != num){
+                        right = [right[0] + A[right[1] - 1],right[1] - 1]
+                    }
+                    if(right[0] == num && left[0] == num){
+                        let three = 0
+                        for(let j = left[1] + 1;j<right[1];j++){
+                            three += A[j]
+                        }
+                        if(three == left[0]){
+                            return true
+                        }
+                    }
+                    
+                }
+                return false
+            }else{
+                return false
+            }
+        };
+        console.log(canThreePartsEqualSum(A))
+    </script>
+</body>
+</html>
