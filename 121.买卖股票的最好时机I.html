@@ -8,17 +8,16 @@
 	<script>
 		let prices = [7,2,6,1]
 		var maxProfit = function(prices) {
-			let money = 0
-			let length = prices.length
-			for(let i = 0;i<length;i++){
-				let one = prices[0]
-				prices.splice(0,1)
-				let max = Math.max(...prices)
-				if ((max - one)> 0 && (max-one)>money) {
-					money = max - one
-				}
-			}
-			return money 
+            let money = 0
+            let length = prices.length
+            for(let i = 0; i < length; i++){
+                let one = prices.splice(0,1)
+                let max = Math.max(...prices)
+                if ((max - one)> 0 && (max - one) > money) {
+                    money = max - one
+                }
+            }
+            return money
 		};
 		console.log(maxProfit(prices))
 	</script>

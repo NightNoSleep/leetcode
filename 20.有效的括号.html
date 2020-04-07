@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s = "{[(])}"
+        var isValid = function(s) {
+            let list = s.split('')
+            let arr = []
+            let obj = {
+                '(':1,
+                ')':6,
+                '{':2,
+                '}':5,
+                '[':3,
+                ']':4
+            }
+            if(list.length % 2 !== 0) {
+                return false
+            }
+            list.map(item => {
+                if(!arr.length) {
+                    arr.push(obj[item])
+                }else{
+                    let index = arr.length - 1
+                    if(arr[index] + obj[item] === 7) {
+                        arr.pop()
+                    }else{
+                        arr.push(obj[item])
+                    }
+                }
+            })
+            return !arr.length
+        };
+        console.log(isValid(s))
+    </script>
+</body>
+</html>

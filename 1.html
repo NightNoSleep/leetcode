@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        // 1 筛选笔试题
+        var arr = [
+           {name:'小米1', value: 1,  type: 2, date: '2018-06-07T08:00:01.589Z' },
+           {name:'锤子T1', value: 1, type: 2, date: '2018-06-07T08:10:01.589Z' },
+           {name:'小米2', value: 1, type: 4, date: '2018-06-07T20:00:01.589Z' },
+           {name:'小米2', value: 4, type: 4, date: '2018-06-07T20:10:21.189Z' },
+           {name:'小米4', value: 1, type: 4, date: '2018-06-07T08:00:01.560Z' },
+           {name:'小米4', value: 2, type: 4, date: '2018-06-07T08:10:31.584Z' },
+           {name:'小米6', value: 1, type: 3, date: '2018-06-07T08:00:01.589Z' },
+           {name:'小米5s',value: 1, type: 4, date: '2018-06-07T08:00:01.589Z' },
+           {name:'锤子T2', value: 1, type: 4, date: '2018-06-07T08:00:01.589Z' },
+           {name:'锤子T1', value: 4, type: 4, date: '2018-06-07T08:06:01.589Z' },
+           {name:'魅蓝note5', value: 1, type: 4, date: '2018-06-07T08:00:01.589Z' },
+           {name:'魅蓝note2', value: 5, type: 4, date: '2018-06-02T08:07:01.589Z' },
+           {name:'魅蓝note2', value: 6, type: 4, date: '2018-06-07T08:00:01.589Z' },
+           {name:'魅蓝note3', value: 1, type: 4, date: '2018-06-05T08:00:01.589Z' },
+           {name:'魅蓝note', value: 1, type: 4, date: '2018-06-07T08:00:01.589Z' },
+           {name:'oppor9', value: 7, type: 4, date: '2018-06-04T08:04:01.588Z' },
+           {name:'华为p9', value: 1, type: 4, date: '2018-06-02T08:00:01.577Z' },
+           {name:'华为p9', value: 2, type: 4, date: '2018-06-07T08:00:01.110Z' },
+           {name:'华为p10', value: 1, type: 1, date: '2018-06-07T08:00:01.534Z' }
+        ];
+        let list = arr.filter((item, index, arr1) => {
+            item.date = item.date.split('T')[0]
+            return item.type === 4
+        })
+        let result = []
+        for (let i = 0; i < list.length; i++) {
+            let one = list[i]
+            for (let j = i + 1; j < list.length; j++) {
+                if (list[j].name === one.name && list[j].date === one.date) {
+                    one.value += list[j].value
+                    list.splice(j, 1)
+                    j--
+                }
+            }
+            result.push(one)
+        }
+        result.map((item, index) => {
+            for (let i = index + 1; i < result.length; i ++) {
+                if (result[index].value < result[i].value) {
+                    let chat = result[i]
+                    result[i] = result[index]
+                    result[index] = chat
+                }
+            }
+        })
+        result.map(item => {
+            let time = new Date(item.date).toLocaleDateString().replace(/\//, '年').replace(/\//, '月') + '日'
+            console.log(`${item.name},${time},售出${item.value}部`)
+        })
+        
+        // 2 一个京东面试题
+        var a = 1;
+        (function a () {
+          a = 2;
+          console.log(a)
+        })()
+        
+        // 3 闭包
+        
+        for(var i = 0; i < 3; i++) {
+          (() => {
+            var a = i
+            setTimeout(() => {
+              // console.log(a)
+            }, 300)
+          })(i)
+        }
+        
+        // 4 promise 构造 1
+        // const promise1 = new Promise((resolve, reject) => {
+        //   console.log (1)
+        //   resolve()
+        //   console.log(2)
+        // })
+        // promise1.then(() => {
+        //   console.log(3)
+        // })
+        // console.log(4)
+        
+        // 5 promise 构造 2
+        const promise2 = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve('success')
+          },1000)
+        })
+        const promise22 = promise2.then(() => {
+          throw new Error('error')
+        })
+        console.log('promise1',promise2)
+        console.log('promise2',promise22)
+        
+        setTimeout(() => {
+          console.log('promise1',promise2)
+          console.log('promise2',promise22)
+        },2000)
+        document.querySelector('.content').innerHTML = ''
+    </script>
+</body>
+</html>

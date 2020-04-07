@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    .content{
+      position: absolute;
+      width: 300px;
+      height:300px;
+      border:1px solid black;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      margin:auto;
+    }
+  </style>
+</head>
+<body>
+<div class='content'>
+
+</div>
+<script>
+  let nums = [3,4,-1,1]
+  let firstMissingPositive = function(nums) {
+    let obj = {}
+    nums.map(item => {
+      obj[item] = true
+    })
+    let num = null
+    flag:
+    for (let i = 1; i <= nums.length + 1;i ++) {
+      if (!obj[i]) {
+        num = i
+        break flag
+      }
+    }
+    return num
+  };
+  document.querySelector('.content').innerHTML= firstMissingPositive(nums)
+</script>
+</body>
+</html>

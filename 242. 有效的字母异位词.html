@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let s = 'anagram',
+            t = 'nagaram';
+        var isAnagram = function(s, t) {
+            if(s.length !== t.length){
+                return false
+            }
+            let S = {},
+                T = {};
+            s = s.split('')
+            t = t.split('')
+            for(let i = 0;i<s.length;i++){
+                if(!S[s[i]]){
+                    S[s[i]] = 1
+                }else{
+                    S[s[i]] += 1
+                }
+                if(!T[t[i]]){
+                    T[t[i]] = 1
+                }else{
+                    T[t[i]] += 1
+                }
+            }
+            for(let i in S){
+                if(T[i] != S[i]){
+                    return false
+                }
+            }
+            return true
+        };
+        document.querySelector('.content').innerHTML= isAnagram(s, t)
+    </script>
+</body>
+</html>

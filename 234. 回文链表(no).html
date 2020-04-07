@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+
+    </div>
+    <script>
+        let head = '1->2->1'
+        var isPalindrome = function(head) {
+            let arr = head.split('->')
+            let arr1 = [...arr]
+            arr1.reverse()
+            for(let i = 0;i<arr.length;i++){
+                if(arr[i] !== arr1[i]){
+                    return false
+                }
+            }
+            return true
+        };
+        document.querySelector('.content').innerHTML= isPalindrome(head)
+    </script>
+</body>
+</html>
