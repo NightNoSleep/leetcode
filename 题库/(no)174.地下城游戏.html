@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+        #curvedarrow {
+            position: absolute;
+            width: 0;
+            left:0;
+            right:0;
+            margin:auto;
+            top:100px;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-right: 9px solid red;
+            transform: rotate(10deg);
+        }
+        #curvedarrow:after {
+            content: "";
+            position: absolute;
+            border: 0 solid transparent;
+            border-top: 3px solid red;
+            border-radius: 20px 0 0 0;
+            top: -12px;
+            left: -9px;
+            width: 12px;
+            height: 12px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<div id='curvedarrow'>
+
+</div>
+<div class='content'>
+
+</div>
+<script>
+    let dungeon = [
+      [-2, -3, 3],
+      [-5, -10, 1],
+      [10, 30, -5]
+    ]
+    let calculateMinimumHP = function(dungeon) {
+        if (!dungeon.length) return 1
+        else {
+            let m = dungeon.length
+            let n = dungeon[0].length
+            const list = new Array(m);
+            for (let i = 0; i < m; i++) {
+                list[i] = new Array(n).fill(0);
+            }
+            const checkP = (dungeon, i, j) => {
+                if (i === m - 1 && j === n - 1) {
+                    return dungeon[i][j] > 0 ? 1 : 1 - dungeon[i][j]
+                }
+                if (list[i][j] > 0) return list[i][j]; // 如果备忘录中有，就直接返回它
+                let goDown = Infinity, goRight = Infinity
+                if (i < m - 1)                         // 走下方的点，需要带着的最小安全血量
+                    goDown = checkP(dungeon, i + 1, j);
+                if (j < n - 1)                         // 走右方的点，需要带着的最小安全血量
+                    goRight = checkP(dungeon, i, j + 1);
+                if (goDown < goRight) {
+                    if (goDown - dungeon[i][j] <= 0) {
+                        list[i][j] = 1;
+                    } else {
+                        list[i][j] = goDown - dungeon[i][j];
+                    }
+                } else {
+                    if (goRight - dungeon[i][j] <= 0) {
+                        list[i][j] = 1;
+                    } else {
+                        list[i][j] = goRight - dungeon[i][j];
+                    }
+                }
+                return list[i][j];
+            }
+            return checkP(dungeon, 0, 0)
+        }
+    };
+    document.querySelector('.content').innerHTML= calculateMinimumHP(dungeon)
+</script>
+</body>
+</html>

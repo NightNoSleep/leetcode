@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            border:1px solid black;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+        #curvedarrow {
+            position: absolute;
+            width: 0;
+            left:0;
+            right:0;
+            margin:auto;
+            top:100px;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-right: 9px solid red;
+            transform: rotate(10deg);
+        }
+        #curvedarrow:after {
+            content: "";
+            position: absolute;
+            border: 0 solid transparent;
+            border-top: 3px solid red;
+            border-radius: 20px 0 0 0;
+            top: -12px;
+            left: -9px;
+            width: 12px;
+            height: 12px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<div id='curvedarrow'>
+
+</div>
+<div class='content'>
+
+</div>
+<script>
+    /**
+     * initialize your data structure here.
+     */
+    var MinStack = function() {
+        this.list = []
+    };
+
+    /**
+     * @param {number} x
+     * @return {void}
+     */
+    MinStack.prototype.push = function(x) {
+        if (!this.list.length) {
+            this.list.push(x) // 作为最小元素备用
+            this.list.push(x)
+        } else {
+            let length = this.list.length
+            if (this.list[length - 2] > x) {
+                this.list.push(x)
+                this.list.push(x)
+            } else {
+                this.list.push(this.list[length - 2])
+                this.list.push(x)
+            }
+        }
+    };
+
+    /**
+     * @return {void}
+     */
+    MinStack.prototype.pop = function() {
+        this.list.pop()
+        this.list.pop()
+    };
+
+    /**
+     * @return {number}
+     */
+    MinStack.prototype.top = function() {
+        return this.list[this.list.length - 1]
+    };
+
+    /**
+     * @return {number}
+     */
+    MinStack.prototype.getMin = function() {
+        return this.list[this.list.length - 2]
+    };
+    var obj = new MinStack()
+    console.log(obj)
+    // document.querySelector('.content').innerHTML= calculateMinimumHP(dungeon)
+</script>
+</body>
+</html>
