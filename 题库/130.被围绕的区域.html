@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+  var solve = function(board) {
+    let row = board.length
+    let col = board[0].length || 0
+    if (row <= 2) return board
+    for (let i = 1; i < row - 1; i++) {
+      for (let j = 1; j < col - 1; j++) {
+        if (board[i][j] === 'O') {
+          let list = []
+          let flag = true
+          flag = changeOToX(board, i, j, flag, list, row, col)
+          if (flag) {
+            list.map(arr => {
+              board[arr[0]][arr[1]] = 'X'
+            })
+          } else {
+            list.map(arr => {
+              board[arr[0]][arr[1]] = 'O'
+            })
+          }
+        }
+      }
+    }
+    return board
+  }
+
+  function changeOToX (board, i, j, flag, list, row, col) {
+    board[i][j] = '1'
+    list.push([i, j])
+    if (board[i - 1] && board[i - 1][j] === 'O' && flag) {
+      if (i === 1) {
+        flag = false
+      } else {
+        flag = changeOToX(board, i - 1, j, flag, list, row, col)
+      }
+    }
+    if (board[i + 1] && board[i + 1][j] === 'O' && flag) {
+      if (i === (row - 2)) {
+        flag = false
+      } else {
+        flag = changeOToX(board, i + 1, j, flag, list, row, col)
+      }
+    }
+    if (board[i][j - 1] === 'O' && flag) {
+      if (j === 1) {
+        flag = false
+      } else {
+        flag = changeOToX(board, i, j - 1, flag, list, row, col)
+      }
+    }
+    if (board[i][j + 1] === 'O' && flag) {
+      if (j === (col - 2)) {
+        flag = false
+      } else {
+        flag = changeOToX(board, i, j + 1, flag, list, row, col)
+      }
+    }
+    return flag
+  }
+  console.log(solve([
+    ["X","X","O","X","X","O","X","O"],
+    ["X","X","X","O","X","X","O","X"],
+    ["X","X","X","O","X","O","X","O"],
+    ["O","X","X","X","X","O","O","X"],
+    ["O","O","O","X","O","O","O","X"],
+    ["O","X","O","O","X","X","O","X"],
+    ["O","X","O","O","X","O","X","X"],
+    ["O","X","X","X","O","O","O","X"]]))
+</script>
+</body>
+</html>

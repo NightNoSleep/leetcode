@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+  var numIslands = function(grid) {
+    let result = 0
+    let row = grid.length
+    let col = grid[0].length || 0
+    if (!row) return result
+    debugger
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col; j++) {
+        let num = grid[i][j]
+        if (num === '1') {
+          result += 1
+          changeOneToZero(grid, i, j)
+        }
+      }
+    }
+    return result
+  }
+
+  function changeOneToZero (grid, i, j) {
+    grid[i][j] = '0'
+
+    if (grid[i + 1] && grid[i + 1][j] === '1') {
+      changeOneToZero(grid, i + 1, j)
+    }
+    if (grid[i - 1] && grid[i - 1][j] === '1') {
+      changeOneToZero(grid, i - 1, j)
+    }
+    if (grid[i][j + 1] === '1') {
+      changeOneToZero(grid, i, j + 1)
+    }
+    if (grid[i][j - 1] === '1') {
+      changeOneToZero(grid, i, j - 1)
+    }
+  }
+
+  console.log(numIslands([
+    ["1","0","1","1","1"],
+    ["1","0","1","0","1"],
+    ["1","1","1","0","1"]]))
+
+
+  var maxAreaOfIsland = function(grid) {
+    let result = [0]
+    let row = grid.length
+    let col = grid[0].length || 0
+    if (!row) return 0
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col; j++) {
+        let num = grid[i][j]
+        if (num === '1') {
+          result.push(changeOneToZero(grid, i, j))
+        }
+      }
+    }
+    return Math.max(...result)
+  };
+
+  function changeOneToZero (grid, i, j) {
+    grid[i][j] = '0'
+    let all = 1
+    if (grid[i + 1] && grid[i + 1][j] === '1') {
+      all += changeOneToZero(grid, i + 1, j)
+    }
+    if (grid[i - 1] && grid[i - 1][j] === '1') {
+      all += changeOneToZero(grid, i - 1, j)
+    }
+    if (grid[i][j + 1] === '1') {
+      all += changeOneToZero(grid, i, j + 1)
+    }
+    if (grid[i][j - 1] === '1') {
+      all += changeOneToZero(grid, i, j - 1)
+    }
+    return all
+  }
+</script>
+</body>
+</html>
